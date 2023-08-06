@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form th:action="@{/user/search}" method="get">
+		<p>Start:</p><input name ="start">
+		<p>End:</p><input name="end">
+		<input name="page">
+		<input name="size" value="10">
+		<button type="submit">Search</button>
+	</form>
+
+
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Age</th>
+		</tr>
+		<!-- for list persons -->
+		<tr th:each = "p : ${userlist}">
+			<td><span th:text = "${p.id}"></span></td>
+			<td><span th:text = "${p.name}"></span></td>
+			<td><span th:text = "${p.age}"></span></td>
+			<td><a th:href = "@{'/person/delete?id=' + ${p.id}}">Delete</a> </td>
+			<td><a th:href = "@{'/person/edit/' + ${p.id}}">Edit</a>
+			
+		</tr>
+		
+	</table>
+</body>
+</html>
